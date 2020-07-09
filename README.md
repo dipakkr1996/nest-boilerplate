@@ -47,6 +47,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+### ENDPOINTS
+
+- /api/v1/time
+- /api/v1/make
+- /api/v1/model
+
 ## Test
 
 ```bash
