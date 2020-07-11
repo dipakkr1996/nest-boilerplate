@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TimeController } from './api/v1/time/time.controller';
-import { MakeController } from './api/v1/make/make.controller';
-import { ModelController } from './api/v1/model/model.controller';
-import { VariantController } from './api/v1/variant/variant.controller';
+import { ModelModule } from './model/model.module';
+import {TypeOrmModule} from '@nestjs/typeorm';
+import {Connection} from 'typeorm';
 
 @Module({
-  imports: [],
-  controllers: [AppController, TimeController, MakeController, ModelController, VariantController],
+  imports: [ModelModule, TypeOrmModule.forRoot()],
+  controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection : Connection){
+    console.log(connection);
+  }
+}
